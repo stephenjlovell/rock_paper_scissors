@@ -1,0 +1,6 @@
+%h3='Tired of Skyrim? Try Rock Paper Scissors!'
+
+= form_tag throw_path, method: :post do
+  = label_tag 'sign', 'Sign'
+  = select_tag 'sign', options_for_select(["rock", "paper", "scissors"])
+  = submit_tag('Go!', class: "btn btn-large btn-primary")
