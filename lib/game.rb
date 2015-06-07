@@ -1,4 +1,3 @@
-module RockPaperScissors
 
   WINNING = {
     rock: :scissors,
@@ -6,29 +5,34 @@ module RockPaperScissors
     scissors: :paper
   }
 
+  MESSAGES = {
+    win: "You've won! Congratulations!",
+    lose: "You lose. Sorry about that.",
+    tie: "It's a tie..."
+  }
+
   class Game
 
     def initialize(opts = {})
-      @throw = opts[:throw]
+      @throw = opts[:sign].to_sym
+      @result = result(@throw)
     end
 
-    def result
-      # winning = WINNING[@throw]
-
+    def message
+      MESSAGES[@result]
     end
-
 
     private
 
-    def computer_throw
-
+    def result(player_throw)
+      opponent_throw = [:rock, :paper, :scissors][rand(3)]
+      if player_throw == opponent_throw
+        :tie
+      elsif WINNING[player_throw] == opponent_throw
+        :win
+      else 
+        :lose
+      end
     end
 
   end
-
-
-
-end
-
-
-
