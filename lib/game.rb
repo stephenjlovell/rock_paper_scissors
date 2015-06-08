@@ -1,34 +1,37 @@
 
-  WINNING = {
+  RPS_RULES = {
     rock: :scissors,
     paper: :rock,
     scissors: :paper
   }
 
-  MESSAGES = {
-    win: "You've won! Congratulations!",
-    lose: "You lose. Sorry about that.",
-    tie: "It's a tie..."
-  }
-
   class Game
 
+    attr_reader :player_throw, :opponent_throw, :result
+
     def initialize(opts = {})
-      @throw = opts[:sign].to_sym
-      @result = result(@throw)
+      @player_throw = opts[:sign].to_sym
+      @result = result(@player_throw)
     end
 
     def message
-      MESSAGES[@result]
+      case @result
+      when :win
+        "#{@player_throw.to_s.titleize} beats #{@opponent_throw}... You've won! Congratulations!"
+      when :lose
+        "#{@opponent_throw.to_s.titleize} beats #{@player_throw}... You lose. Sorry about that."
+      when :tie
+        "You both threw #{@player_throw}... It's a tie."
+      end
     end
 
     private
 
     def result(player_throw)
-      opponent_throw = [:rock, :paper, :scissors][rand(3)]
-      if player_throw == opponent_throw
+      @opponent_throw = [:rock, :paper, :scissors][rand(3)]
+      if player_throw == @opponent_throw
         :tie
-      elsif WINNING[player_throw] == opponent_throw
+      elsif RPS_RULES[player_throw] == @opponent_throw
         :win
       else 
         :lose
