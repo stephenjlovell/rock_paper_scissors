@@ -1,6 +1,19 @@
-%h3= @game.message
+%h3.page-header= @game.message
 
+%table.table.table-hover
+  %thead
+    %tr
+      %th You Chose:
+      %th Computer Chose:
+  %tbody
+    %tr
+      %td= @game.player_throw
+      %td= @game.opponent_throw
 %p
   = link_to "Play Again", root_url, class: "btn btn-default"
+
+%p
+  - if @game.result != :tie && @game.winning_throw != :lizzard && @game.winning_throw != :spock
+    = video_tag "#{@game.winning_throw}.mp4", { controls: true, size: "320x240", autobuffer: true, autoplay: true, loop: true }
 
 
