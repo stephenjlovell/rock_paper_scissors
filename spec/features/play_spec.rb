@@ -11,7 +11,7 @@ feature "gameplay" do
       expect(page).to have_select('sign', options: ['rock', 'paper', 'scissors'])
     end
 
-    it "can choose a throw from a dropdown menu" do 
+    it "can choose to throw a sign from a dropdown menu" do 
       select 'rock', from: 'sign'
       click_on 'Go!'
       expect(page.text).to match /[Rr]ock/

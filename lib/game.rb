@@ -14,7 +14,6 @@
   } 
 
   class Game
-
     attr_reader :player_throw, :opponent_throw, :winning_throw, :result
 
     def initialize(opts = {})
