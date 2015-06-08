@@ -20,17 +20,6 @@
       @rules = opts[:rules]
     end
 
-    def message
-      case @result
-      when :win
-        "#{@player_throw.to_s.titleize} beats #{@opponent_throw}... You've won! Congratulations!"
-      when :lose
-        "#{@opponent_throw.to_s.titleize} beats #{@player_throw}... You lose. Sorry about that."
-      when :tie
-        "You both threw #{@player_throw}... It's a tie."
-      end
-    end
-
     def valid_signs
       @rules.keys.map(&:to_s)
     end

@@ -1,4 +1,11 @@
-%h3.page-header= @game.message
+%h3.page-header
+  - case @game.result
+  - when :win
+    = "#{@game.player_throw.to_s.titleize} beats #{@game.opponent_throw}... You've won! Congratulations!"
+  - when :lose
+    = "#{@game.opponent_throw.to_s.titleize} beats #{@game.player_throw}... You lose. Sorry about that."
+  - when :tie
+    = "You both threw #{@game.player_throw}... It's a tie."
 
 %table.table.table-hover
   %thead
