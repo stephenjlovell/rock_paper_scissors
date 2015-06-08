@@ -12,6 +12,8 @@ module RockPaperScissors
 
     config.autoload_paths << Rails.root.join('lib')
 
+    config.assets.paths << "#{Rails.root}/app/assets/videos"
+
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
